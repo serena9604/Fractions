@@ -38,7 +38,7 @@ public class Fraction
     public Fraction (Fraction f) {
         this.n = f.n;
         this.d = f.d;
-    };
+    }
 
     public int getNum() {
         return this.n;
@@ -62,7 +62,9 @@ public class Fraction
     }
 
     public void reduce (Fraction f) {
-        GCF(n, d);
+        int GCF = GCF(n, d);
+        this.n = n/GCF;
+        this.d= d/GCF;
     }
 
     public void setNum(int n) {
@@ -88,9 +90,33 @@ public class Fraction
     public static Fraction multiply (Fraction a, Fraction b) {
         int numerator = a.n * b.n;
         int denominator = a.d * b.d;
-        Fraction f = new Fraction(numerator, denominator);
-        f = reduce(f);
+        Fraction f = new Fraction(numerator, denominator); 
+        f.reduce(f);
         return f;
-
     }
+
+    public static Fraction divide (Fraction a, Fraction b) {
+        int numerator = a.n * b.d;
+        int denominator = a.d * b.n;
+        Fraction f = new Fraction(numerator, denominator); 
+        f.reduce(f);
+        return f;
+    }
+
+    public static Fraction add (Fraction a, Fraction b) {
+        int denominator = a.d * b.d;
+        int numerator = a.n * b.d + b.n * a.d;
+        Fraction f = new Fraction(numerator, denominator);   
+        f.reduce(f);
+        return f;
+    }
+
+    public static Fraction subtract (Fraction a, Fraction b) {
+        int denominator = a.d * b.d;
+        int numerator = a.n * b.d - b.n * a.d;
+        Fraction f = new Fraction(numerator, denominator);  
+        f.reduce(f);
+        return f;
+    }
+
 }
