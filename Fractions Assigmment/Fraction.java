@@ -53,7 +53,8 @@ public class Fraction
     }
 
     public double toDouble() {
-        return n/d;
+        double decimal = (double) n/d;
+        return decimal;
     }
 
     public int sampleMethod(int y)
